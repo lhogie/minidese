@@ -9,7 +9,7 @@ import toools.thread.Threads;
 
 public class DES<S> implements Runnable
 {
-	private double time = 0;
+	private double time = -1;
 	private final EventQueue<S> eventQueue = new EventPriorityQueue<S>();
 	private final S system;
 	private boolean stepped = false;

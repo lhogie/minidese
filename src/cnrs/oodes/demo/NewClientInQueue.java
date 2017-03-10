@@ -24,18 +24,25 @@ class NewClientInQueue extends Event<Office>
 			if (d.customer == null)
 			{
 				d.customer = customer;
-				getSimulation().getEventQueue().add(new ClientLeaveDesk(getSimulation(), getOccurenceDate()  + getSimulation().getPRNG().nextInt(3) + 1, d));
+				getSimulation().getEventQueue()
+						.add(new ClientLeaveDesk(getSimulation(),
+								getOccurenceDate()
+										+ getSimulation().getPRNG().nextInt(5 * 60) + 30,
+								d));
 				break;
 			}
 		}
 
-		getSimulation().getEventQueue().add(new NewClientInQueue(getSimulation(), getOccurenceDate() + getSimulation().getPRNG().nextInt(3) + 1, new Customer()));
-
+		getSimulation().getEventQueue()
+				.add(new NewClientInQueue(getSimulation(),
+						getOccurenceDate() + getSimulation().getPRNG().nextInt(3) + 1,
+						new Customer()));
 	}
-
+	
 	@Override
 	public String toString()
 	{
-		return "new client in queue, its length now is " + getSimulation().getSystem().queue.size();
+		return "new client in queue, its length now is "
+				+ getSimulation().getSystem().queue.size();
 	}
 }

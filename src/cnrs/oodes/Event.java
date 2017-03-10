@@ -1,5 +1,7 @@
 package cnrs.oodes;
 
+import toools.NotYetImplementedException;
+
 public abstract class Event<S>
 {
 	private final DES<S> simulation;
@@ -12,7 +14,8 @@ public abstract class Event<S>
 			throw new IllegalArgumentException();
 
 		if (occurenceDate <= simulation.getTime())
-			throw new IllegalArgumentException("new event must be scheduled in the future");
+			throw new IllegalArgumentException(
+					"new event must be scheduled in the future");
 
 		this.simulation = simulation;
 		this.occurenceDate = occurenceDate;
@@ -38,7 +41,17 @@ public abstract class Event<S>
 		return occurenceDate;
 	}
 
-
+	protected double future(double d)
+	{
+		assert d > 0;
+		return getOccurenceDate() + d;
+	}
 
 	protected abstract void execute();
+
+	protected void undo()
+	{
+		throw new NotYetImplementedException(
+				"Undo is not available for events of types " + getClass().getName());
+	}
 }

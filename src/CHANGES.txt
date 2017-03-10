@@ -26,3 +26,7 @@ Version 0.1.0	released on 2014/03/27
 
 Version 0.1.0	released on 2014/04/11
 
+
+
+Version 0.0.1	released on 2016/01/27
+

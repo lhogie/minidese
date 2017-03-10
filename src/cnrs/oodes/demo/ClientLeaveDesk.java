@@ -5,12 +5,12 @@ import cnrs.oodes.Event;
 
 class ClientLeaveDesk extends Event<Office>
 {
-	final Desk d;
+	final Desk desk;
 
 	public ClientLeaveDesk(DES<Office> simulation, double date, Desk c)
 	{
 		super(simulation, date);
-		this.d = c;
+		this.desk = c;
 	}
 
 	@Override
@@ -18,12 +18,16 @@ class ClientLeaveDesk extends Event<Office>
 	{
 		Office shop = getSimulation().getSystem();
 
-		if (!shop.queue.isEmpty())
+		if ( ! shop.queue.isEmpty())
 		{
-			d.customer = shop.queue.remove(0);
-			getSimulation().getEventQueue().add(new ClientLeaveDesk(getSimulation(), getOccurenceDate()  + getSimulation().getPRNG().nextInt(3) + 1, d));
+			desk.customer = shop.queue.remove(0);
+			double d = future(getSimulation().getPRNG().nextDouble() * 3);
+			getSimulation().getEventQueue().add(new ClientLeaveDesk(getSimulation(),
+					d, desk));
 		}
 	}
+
+
 
 	@Override
 	public String toString()

@@ -17,8 +17,9 @@ public class EventPriorityQueue<S> implements EventQueue<S>
 			public int compare(Event<S> e1, Event<S> e2)
 			{
 				if (e1.getOccurenceDate() == e2.getOccurenceDate())
-					throw new IllegalStateException(""+e1.getOccurenceDate());
-				
+					throw new IllegalStateException(
+							"events occur at the same date " + e1.getOccurenceDate());
+
 				return MathsUtilities.compare(e1.getOccurenceDate(),
 						e2.getOccurenceDate());
 			}
@@ -31,7 +32,6 @@ public class EventPriorityQueue<S> implements EventQueue<S>
 	{
 		q.add(e);
 	}
-
 
 	@Override
 	public Event<S> getNextEvent()
