@@ -1,7 +1,7 @@
-package cnrs.oodes.demo;
+package cnrs.minides.demo;
 
-import cnrs.oodes.DES;
-import cnrs.oodes.Event;
+import cnrs.minides.DES;
+import cnrs.minides.Event;
 
 class NewClientInQueue extends Event<Office>
 {
@@ -14,7 +14,7 @@ class NewClientInQueue extends Event<Office>
 	}
 
 	@Override
-	protected void execute()
+	protected void doIt()
 	{
 		getSimulation().getSystem().queue.add(customer);
 
@@ -24,25 +24,25 @@ class NewClientInQueue extends Event<Office>
 			if (d.customer == null)
 			{
 				d.customer = customer;
-				getSimulation().getEventQueue()
-						.add(new ClientLeaveDesk(getSimulation(),
-								getOccurenceDate()
-										+ getSimulation().getPRNG().nextInt(5 * 60) + 30,
-								d));
+				getSimulation().getEventQueue().add(new ClientLeaveDesk(getSimulation(),
+						future(getSimulation().getPRNG().nextDouble() * 5 * 60 + 30), d));
 				break;
 			}
 		}
 
-		getSimulation().getEventQueue()
-				.add(new NewClientInQueue(getSimulation(),
-						getOccurenceDate() + getSimulation().getPRNG().nextInt(3) + 1,
-						new Customer()));
+		getSimulation().getEventQueue().add(new NewClientInQueue(getSimulation(),
+				future(getSimulation().getPRNG().nextDouble() * 3 + 1), new Customer()));
 	}
-	
+
 	@Override
 	public String toString()
 	{
 		return "new client in queue, its length now is "
 				+ getSimulation().getSystem().queue.size();
+	}
+
+	@Override
+	protected void undoIt()
+	{
 	}
 }

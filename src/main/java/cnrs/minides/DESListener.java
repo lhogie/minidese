@@ -1,4 +1,4 @@
-package cnrs.oodes;
+package cnrs.minides;
 
 public interface DESListener<S>
 {

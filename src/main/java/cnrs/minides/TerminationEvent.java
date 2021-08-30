@@ -1,4 +1,6 @@
-package cnrs.oodes;
+package cnrs.minides;
+
+import toools.exceptions.NotYetImplementedException;
 
 public class TerminationEvent extends Event
 {
@@ -9,9 +11,15 @@ public class TerminationEvent extends Event
 	}
 
 	@Override
-	protected void execute()
+	protected void doIt()
 	{
 		throw new IllegalStateException("this event should never be executed");
+	}
+
+	@Override
+	protected void undoIt()
+	{
+		throw new NotYetImplementedException();
 	}
 
 }

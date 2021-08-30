@@ -1,7 +1,7 @@
-package cnrs.oodes.demo;
+package cnrs.minides.demo;
 
-import cnrs.oodes.DES;
-import cnrs.oodes.StdOutLogger;
+import cnrs.minides.DES;
+import cnrs.minides.StdOutLogger;
 
 /*
  * One shop is made of cashers.

@@ -1,6 +1,4 @@
-package cnrs.oodes;
-
-import toools.NotYetImplementedException;
+package cnrs.minides;
 
 public abstract class Event<S>
 {
@@ -47,11 +45,7 @@ public abstract class Event<S>
 		return getOccurenceDate() + d;
 	}
 
-	protected abstract void execute();
+	protected abstract void doIt();
 
-	protected void undo()
-	{
-		throw new NotYetImplementedException(
-				"Undo is not available for events of types " + getClass().getName());
-	}
+	protected abstract void undoIt();
 }

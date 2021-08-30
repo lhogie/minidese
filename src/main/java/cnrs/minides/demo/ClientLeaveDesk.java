@@ -1,7 +1,7 @@
-package cnrs.oodes.demo;
+package cnrs.minides.demo;
 
-import cnrs.oodes.DES;
-import cnrs.oodes.Event;
+import cnrs.minides.DES;
+import cnrs.minides.Event;
 
 class ClientLeaveDesk extends Event<Office>
 {
@@ -14,7 +14,7 @@ class ClientLeaveDesk extends Event<Office>
 	}
 
 	@Override
-	protected void execute()
+	protected void doIt()
 	{
 		Office shop = getSimulation().getSystem();
 
@@ -22,12 +22,15 @@ class ClientLeaveDesk extends Event<Office>
 		{
 			desk.customer = shop.queue.remove(0);
 			double d = future(getSimulation().getPRNG().nextDouble() * 3);
-			getSimulation().getEventQueue().add(new ClientLeaveDesk(getSimulation(),
-					d, desk));
 		}
 	}
 
+	@Override
+	protected void undoIt()
+	{
+		// TODO Auto-generated method stub
 
+	}
 
 	@Override
 	public String toString()

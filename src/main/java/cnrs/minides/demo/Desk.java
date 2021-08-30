@@ -1,4 +1,4 @@
-package cnrs.oodes.demo;
+package cnrs.minides.demo;
 
 class Desk
 {

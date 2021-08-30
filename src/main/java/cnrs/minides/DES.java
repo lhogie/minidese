@@ -1,4 +1,4 @@
-package cnrs.oodes;
+package cnrs.minides;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,7 +121,7 @@ public class DES<S> implements Runnable
 			throw new IllegalStateException("anterior and simultaneous events are not allowed:" +nextEvent);
 
 		this.time = eventDate;
-		nextEvent.execute();
+		nextEvent.doIt();
 		++numberOfProcessedEvents;
 
 		for (DESListener<S> l : listeners)

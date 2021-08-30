@@ -1,9 +1,7 @@
-package cnrs.oodes;
+package cnrs.minides;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
-
-import toools.math.MathsUtilities;
 
 public class EventPriorityQueue<S> implements EventQueue<S>
 {
@@ -20,10 +18,8 @@ public class EventPriorityQueue<S> implements EventQueue<S>
 					throw new IllegalStateException(
 							"events occur at the same date " + e1.getOccurenceDate());
 
-				return MathsUtilities.compare(e1.getOccurenceDate(),
-						e2.getOccurenceDate());
+				return Double.compare(e1.getOccurenceDate(), e2.getOccurenceDate());
 			}
-
 		});
 	}
 
